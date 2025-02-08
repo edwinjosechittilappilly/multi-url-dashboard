@@ -9,7 +9,8 @@
     "build:mac": "electron-builder build --mac",
     "build:win": "electron-builder build --win",
     "postinstall": "electron-builder install-app-deps",
-    "make": "node scripts/make.js"
+    "make": "node scripts/make.js",
+    "generate-icons": "node scripts/generate-icons.js"
   },
   "build": {
     "appId": "com.multiurldashboard.app",
@@ -23,16 +24,25 @@
       "package.json"
     ],
     "mac": {
-      "target": ["dmg"],
-      "identity": null
+      "target": [
+        "dmg"
+      ],
+      "identity": null,
+      "artifactName": "${productName}-${version}.${ext}",
+      "icon": "build/icon.icns"
     },
     "win": {
-      "target": ["nsis"],
-      "icon": "build/icon.ico"
+      "target": [
+        "nsis"
+      ],
+      "icon": "build/icon.ico",
+      "artifactName": "${productName}-Setup-${version}.${ext}"
     }
   },
   "devDependencies": {
     "electron": "^34.1.1",
-    "electron-builder": "^25.1.8"
+    "electron-builder": "^25.1.8",
+    "electron-icon-maker": "^0.0.5",
+    "icon-gen": "^3.0.1"
   }
 }

@@ -1,0 +1,43 @@
+{
+  "name": "multi-url-dashboard",
+  "version": "1.0.0",
+  "description": "A multi-panel dashboard for viewing multiple URLs",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder build --win --mac",
+    "build:win": "electron-builder build --win",
+    "build:mac": "electron-builder build --mac",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "build": {
+    "appId": "com.multiurldashboard.app",
+    "productName": "Multi URL Dashboard",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "build/icon.ico"
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "icon": "build/icon.icns"
+    }
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  }
+}

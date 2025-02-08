@@ -1,6 +1,6 @@
 {
   "name": "multi-url-dashboard",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A multi-panel dashboard for viewing multiple URLs",
   "main": "src/main.js",
   "scripts": {

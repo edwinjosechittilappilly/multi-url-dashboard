@@ -2,6 +2,7 @@
   "name": "multi-url-dashboard",
   "version": "1.0.1",
   "description": "A multi-panel dashboard for viewing multiple URLs",
+  "author": "Multi URL Dashboard Team",
   "main": "src/main.js",
   "scripts": {
     "start": "electron .",

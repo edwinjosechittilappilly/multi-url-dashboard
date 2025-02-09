@@ -5,6 +5,10 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: write
+  packages: write
+
 jobs:
   release:
     runs-on: ${{ matrix.os }}
@@ -25,10 +29,17 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Update package.json
+        run: |
+          node -e "const pkg=require('./package.json'); pkg.author='Multi URL Dashboard Team'; require('fs').writeFileSync('package.json', JSON.stringify(pkg, null, 2))"
+
       - name: Generate Icons
         run: npm run generate-icons
 
       - name: Build Application
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if [ "${{ matrix.os }}" = "macos-latest" ]; then
             npm run build:mac
